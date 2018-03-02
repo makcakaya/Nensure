@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.1</Version>
+    <Authors>Mert Akcakaya</Authors>
+    <Company>Mert Akcakaya</Company>
+    <Description>Simple, fluent, lightweight assertion library to create assertion points in your code.</Description>
+    <RepositoryUrl>https://github.com/makcakaya/Nensure</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/makcakaya/Nensure</PackageProjectUrl>
+    <PackageTags>assert, assertion, ensure, fluent</PackageTags>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
