@@ -12,21 +12,47 @@ namespace Nensure.Tests
             DateTime? nullDate = null;
             string notNullString = "not null";
 
-            new Ensure().NotNull(new object[] { });
-            Assert.Throws<AssertionException>(() => new Ensure().NotNull(null));
-            Assert.Throws<AssertionException>(() => new Ensure().NotNull(string.Empty, null));
-            Assert.Throws<AssertionException>(() => new Ensure().NotNull(nullString));
-            Assert.Throws<AssertionException>(() => new Ensure().NotNull(nullString, nullDate));
-            Assert.Throws<AssertionException>(() => new Ensure().NotNull(notNullString, nullDate));
+            Ensure.NotNull();
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(null));
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(string.Empty, null));
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(nullString));
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(nullString, nullDate));
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(notNullString, nullDate));
         }
 
         [Fact]
         public void Fluency()
         {
-            new Ensure().NotNull(String.Empty).True(true).False(false);
-            Assert.Throws<AssertionException>(() => new Ensure().NotNull(null).True(true).False(false));
-            Assert.Throws<AssertionException>(() => new Ensure().NotNull(String.Empty).True(false).False(false));
-            Assert.Throws<AssertionException>(() => new Ensure().NotNull(String.Empty).True(true).False(true));
+            Ensure.NotNull(String.Empty).True(true).False(false);
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(null).True(true).False(false));
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(String.Empty).True(false).False(false));
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(String.Empty).True(true).False(true));
+        }
+
+        [Fact]
+        public void NotNullOrWhitespace()
+        {
+            Ensure.NotNullOrWhitespace();
+            Ensure.NotNullOrWhitespace("a");
+            Ensure.NotNullOrWhitespace("a", "123");
+
+            Assert.Throws<AssertionException>(() => Ensure.NotNullOrWhitespace(string.Empty));
+            Assert.Throws<AssertionException>(() => Ensure.NotNullOrWhitespace(" "));
+            Assert.Throws<AssertionException>(() => Ensure.NotNullOrWhitespace("1234", " "));
+            Assert.Throws<AssertionException>(() => Ensure.NotNullOrWhitespace("1234", " a ", null));
+        }
+
+        [Fact]
+        public void NotNullOrEmpty()
+        {
+            Ensure.NotNullOrEmpty();
+            Ensure.NotNullOrEmpty("a");
+            Ensure.NotNullOrEmpty("a", "123");
+            Ensure.NotNullOrEmpty(" ");
+
+            Assert.Throws<AssertionException>(() => Ensure.NotNullOrEmpty(string.Empty));
+            Assert.Throws<AssertionException>(() => Ensure.NotNullOrWhitespace("1234", string.Empty));
+            Assert.Throws<AssertionException>(() => Ensure.NotNullOrWhitespace("1234", " a ", null));
         }
     }
 }

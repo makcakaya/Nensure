@@ -1,21 +1,32 @@
 ﻿namespace Nensure
 {
-    public sealed class Ensure : ConnectorResult
+    public static class Ensure
     {
-        public ConnectorResult NotNull(params object[] args)
+        private static readonly Connector _instance = new Connector();
+
+        public static Connector True(bool expression)
         {
-            if (args is null)
-            {
-                throw new AssertionException("NotNull assertion failed.");
-            }
-            for (var i = 0; i < args.Length; i++)
-            {
-                if (args[i] is null)
-                {
-                    throw new AssertionException("NotNull assertion failed.");
-                }
-            }
-            return this;
+            return _instance.True(expression);
+        }
+
+        public static Connector False(bool expression)
+        {
+            return _instance.False(expression);
+        }
+
+        public static Connector NotNull(params object[] args)
+        {
+            return _instance.NotNull(args);
+        }
+
+        public static Connector NotNullOrWhitespace(params string[] args)
+        {
+            return _instance.NotNullOrWhitespace(args);
+        }
+
+        public static Connector NotNullOrEmpty(params string[] args)
+        {
+            return _instance.NotNullOrEmpty(args);
         }
     }
 }
