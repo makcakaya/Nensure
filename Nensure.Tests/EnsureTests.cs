@@ -6,21 +6,6 @@ namespace Nensure.Tests
     public sealed class EnsureTests
     {
         [Fact]
-        public void NotNull()
-        {
-            string nullString = null;
-            DateTime? nullDate = null;
-            string notNullString = "not null";
-
-            Ensure.NotNull();
-            Assert.Throws<AssertionException>(() => Ensure.NotNull(null));
-            Assert.Throws<AssertionException>(() => Ensure.NotNull(string.Empty, null));
-            Assert.Throws<AssertionException>(() => Ensure.NotNull(nullString));
-            Assert.Throws<AssertionException>(() => Ensure.NotNull(nullString, nullDate));
-            Assert.Throws<AssertionException>(() => Ensure.NotNull(notNullString, nullDate));
-        }
-
-        [Fact]
         public void Fluency()
         {
             Ensure.NotNull(String.Empty).True(true).False(false);
@@ -30,9 +15,22 @@ namespace Nensure.Tests
         }
 
         [Fact]
+        public void NotNull()
+        {
+            string nullString = null;
+            DateTime? nullDate = null;
+            string notNullString = "not null";
+
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(null));
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(string.Empty, null));
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(nullString));
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(nullString, nullDate));
+            Assert.Throws<AssertionException>(() => Ensure.NotNull(notNullString, nullDate));
+        }
+
+        [Fact]
         public void NotNullOrWhitespace()
         {
-            Ensure.NotNullOrWhitespace();
             Ensure.NotNullOrWhitespace("a");
             Ensure.NotNullOrWhitespace("a", "123");
 
@@ -45,7 +43,6 @@ namespace Nensure.Tests
         [Fact]
         public void NotNullOrEmpty()
         {
-            Ensure.NotNullOrEmpty();
             Ensure.NotNullOrEmpty("a");
             Ensure.NotNullOrEmpty("a", "123");
             Ensure.NotNullOrEmpty(" ");
