@@ -2,11 +2,11 @@
 {
     public sealed class Asserter : IAsserter
     {
-        private static readonly AssertionException TrueException = new AssertionException("Expression is not true.");
-        private static readonly AssertionException FalseException = new AssertionException("Expression is not false.");
-        private static readonly AssertionException NotNullException = new AssertionException("NotNull assertion failed.");
-        private static readonly AssertionException NotNullOrWhitespaceException = new AssertionException("NotNullOrWhitespace assertion failed.");
-        private static readonly AssertionException NotNullOrEmptyException = new AssertionException("NotNullOrEmpty assertion failed.");
+        private AssertionException TrueException => new AssertionException("Expression is not true.");
+        private AssertionException FalseException => new AssertionException("Expression is not false.");
+        private AssertionException NotNullException => new AssertionException("NotNull assertion failed.");
+        private AssertionException NotNullOrWhitespaceException => new AssertionException("NotNullOrWhitespace assertion failed.");
+        private AssertionException NotNullOrEmptyException => new AssertionException("NotNullOrEmpty assertion failed.");
 
         public IAsserter True(bool expression)
         {

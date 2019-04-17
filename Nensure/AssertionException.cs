@@ -2,6 +2,7 @@
 
 namespace Nensure
 {
+    [Serializable]
     public sealed class AssertionException : Exception
     {
         public AssertionException()
