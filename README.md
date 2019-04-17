@@ -1,5 +1,5 @@
 # Nensure
-Simple, fluent, lightweight assertion library to create assertion points in your .NET code.
+![](https://github.com/makcakaya/Nensure/raw/master/assets/Nensure_logo_64px.png) Simple, fluent, lightweight assertion library to create assertion points in your .NET code.
 
 ## Sample Usage
 ```csharp
