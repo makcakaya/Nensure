@@ -17,6 +17,6 @@ Simple, fluent, lightweight assertion library to create assertion points in your
                   .NotNull(user).True(user.Age > 18).NotNullOrEmpty(user.Name);
         }
         
-### What happens when the assertion fails
+### What happens when the assertion fails?
 An instance of `AssertionException` with a meaningful message is thrown if one of the assertions fails, so you have a specific exception
 type to catch and handle assertion failures.
