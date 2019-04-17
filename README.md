@@ -6,14 +6,14 @@ Simple, fluent, lightweight assertion library to create assertion points in your
         // Use Ensure static object each time for each argument assertion
         public void Demonstrate(string url, User user)
         {
-            Ensure.NotNullOrEmpty(url).True(url.Contains('http')).False(url.EndsWith('?'));
+            Ensure.NotNullOrEmpty(url).True(url.Contains("http")).False(url.EndsWith("?"));
             Ensure.NotNull(user).True(user.Age > 18).NotNullOrEmpty(user.Name);
         }
 
         // Use Ensure static object once to validate all arguments
         public void Demonstrate(string url, User user)
         {
-            Ensure.NotNullOrEmpty(url).True(url.Contains('http')).False(url.EndsWith('?'))
+            Ensure.NotNullOrEmpty(url).True(url.Contains("http")).False(url.EndsWith("?"))
                   .NotNull(user).True(user.Age > 18).NotNullOrEmpty(user.Name);
         }
 ```
